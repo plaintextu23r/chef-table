@@ -1,17 +1,20 @@
-language: python
-python:
-  - "2.6"
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.5-dev"  # 3.5 development branch
-  - "3.6"
-  - "3.6-dev"  # 3.6 development branch
-  - "3.7-dev"  # 3.7 development branch
-# command to install dependencies
-install:
-  - pip install matplotlib seaborn
-# command to run tests
-script:
-  - pytest
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld
+  name: helloworld
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: helloworld
+      name: helloworld
+    spec:
+      containers:
+        - name: helloworld
+          image: gcr.io/hightowerlabs/helloworld:0.0.1
+          imagePullPolicy: Always
+          args:
+            - "-http=127.0.0.1:8080"
