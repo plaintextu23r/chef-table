@@ -1,5 +1,6 @@
 before_install:
   - gem install bundler
+script: 'bundle exec rake spec'
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
