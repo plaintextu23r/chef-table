@@ -1,3 +1,5 @@
+before_install:
+  - gem install bundler
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
